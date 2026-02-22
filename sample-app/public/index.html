@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberTip Triage</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .hidden { display: none; }
+        .view { border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .alert { border: 1px solid red; padding: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>CyberTip Triage</h1>
+
+    <div id="login-view" class="view">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" id="username"><br><br>
+        <input type="password" placeholder="Password" id="password"><br><br>
+        <button id="login-button">Log In</button>
+    </div>
+
+    <div id="dashboard-view" class="view hidden">
+        <h2>Dashboard</h2>
+        <div id="stats">
+            <p>Active Alerts: <span id="alert-count">3</span></p>
+        </div>
+        <div id="alert-list">
+            <div class="alert" id="alert-1">
+                <h3>Suspicious Activity #123</h3>
+                <p>IP: 192.168.1.105</p>
+                <button class="resolve-btn" data-id="1">Resolve</button>
+            </div>
+            <div class="alert" id="alert-2">
+                <h3>Malware Detected #124</h3>
+                <p>File: payload.exe</p>
+                <button class="resolve-btn" data-id="2">Resolve</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', () => {
+            document.getElementById('login-view').classList.add('hidden');
+            document.getElementById('dashboard-view').classList.remove('hidden');
+        });
+
+        document.querySelectorAll('.resolve-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const alertDiv = e.target.closest('.alert');
+                alertDiv.style.backgroundColor = '#e0ffe0';
+                e.target.textContent = 'Resolved';
+                e.target.disabled = true;
+
+                const countSpan = document.getElementById('alert-count');
+                countSpan.textContent = parseInt(countSpan.textContent) - 1;
+            });
+        });
+    </script>
+</body>
+</html>

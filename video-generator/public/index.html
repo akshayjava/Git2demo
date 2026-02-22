@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberTip Triage - Demo Generator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .container { margin-top: 20px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:disabled { background-color: #ccc; }
+        #status { margin-top: 20px; font-weight: bold; }
+        #video-container { margin-top: 20px; display: none; }
+        video { width: 100%; max-width: 600px; border: 1px solid #ccc; }
+        #script-container { margin-top: 20px; display: none; }
+        textarea { width: 100%; height: 300px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>CyberTip Triage - Demo Generator</h1>
+    <p>Generate product demo videos directly from your Git repository.</p>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="repoPath">Repository Path (Absolute)</label>
+            <input type="text" id="repoPath" placeholder="/path/to/your/repo" value="/app/sample-app">
+        </div>
+
+        <div class="input-group">
+            <label for="appUrl">Running App URL</label>
+            <input type="text" id="appUrl" placeholder="http://localhost:3000" value="http://localhost:3000">
+        </div>
+
+        <div class="input-group">
+            <label>
+                <input type="checkbox" id="skipVoice"> Skip Voice Generation (Use existing or silent)
+            </label>
+        </div>
+
+        <button id="generateBtn">Generate Video</button>
+
+        <div id="status">Status: Idle</div>
+
+        <div id="video-container">
+            <h3>Generated Demo</h3>
+            <video id="demoVideo" controls></video>
+            <br>
+            <a id="downloadLink" href="#" download="demo.mp4">Download Video</a>
+        </div>
+
+        <div id="script-container">
+            <h3>Generated Script</h3>
+            <textarea id="scriptText" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
