@@ -1,0 +1,21 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build and output
+dist/
+build/
+output/
+verification-output/
+*.mp4
+*.webm
+*.json
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# System files
+.DS_Store
+Thumbs.db

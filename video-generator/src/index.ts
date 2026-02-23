@@ -24,7 +24,7 @@ interface Arguments {
 
 const argv = yargs(hideBin(process.argv))
   .option('repo', { type: 'string', demandOption: true, description: 'Path to repository' })
-  .option('url', { type: 'string', demandOption: true, description: 'URL of the running app' })
+  .option('url', { type: 'string', default: process.env.APP_URL || 'http://localhost:3000', description: 'URL of the running app' })
   .option('output', { type: 'string', default: 'output', description: 'Output directory' })
   .option('script-only', { type: 'boolean', default: false, description: 'Generate script only' })
   .option('skip-voice', { type: 'boolean', default: false, description: 'Skip voice generation' })
